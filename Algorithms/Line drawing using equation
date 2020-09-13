@@ -1,0 +1,37 @@
+
+function setup()
+{
+  createCanvas (400, 400);
+}
+
+function draw()
+{
+  background (0);
+  myLine (10, 20, 150, 300);
+  updatePixels ();
+}
+
+function myLine(x1, y1, x2, y2)
+{
+  m = (y2 - y1) / (x2 - x1);
+  b = y1 - (m * x1);
+  if (x2 - x1 < 0)
+    {
+      x = x2;
+      y = y2;
+      xend = x1;
+    }
+  else
+    {
+      x = x1;
+      y = y1;
+      xend = x2;
+    }
+  while (x <= xend)
+    {
+      set (x, y, color ('yellow'));
+      x++;
+      y = (m * x) + b;
+    }
+}
+
