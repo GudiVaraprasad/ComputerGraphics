@@ -1,0 +1,80 @@
+
+function setup ()
+{
+  createCanvas (300, 300);
+}
+
+function draw ()
+{
+
+  background (0);
+  
+  BresenhamCircle (150, 150, 100);
+
+  updatePixels ();
+
+}
+
+function EightWaySymmetricPlot (xc, yc, x, y)
+{
+
+  set (x + xc, y + yc, color ('RED'));
+
+  set (x + xc, -y + yc, color ('YELLOW'));
+
+  set (-x + xc, -y + yc, color ('GREEN'));
+
+  set (-x + xc, y + yc, color ('YELLOW'));
+
+  set (y + xc, x + yc, color ('RED'));
+
+  set (y + xc, -x + yc, color ('YELLOW'));
+
+  set (-y + xc, -x + yc, color ('GREEN'));
+
+  set (-y + xc, x + yc, color ('RED'));
+  
+}
+
+
+
+function BresenhamCircle (xc, yc, r)
+{
+  x = 0;
+
+  y = r;
+
+  d = 1 - r;
+
+  EightWaySymmetricPlot (xc, yc, x, y);
+
+
+  while (x <= y)
+
+    {
+
+      if (d <= 0)
+
+	{
+
+	  d = d + (2 * x) + 3;
+
+	}
+
+      else
+
+	{
+
+	  d = d + (2 * x) - (2 * y) + 5;
+
+	  y = y - 1;
+
+	}
+
+      x = x + 1;
+
+      EightWaySymmetricPlot (xc, yc, x, y);
+
+    }
+
+}
