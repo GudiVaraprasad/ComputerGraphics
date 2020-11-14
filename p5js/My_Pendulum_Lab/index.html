@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <script src="js/p5.js"></script>
+    <script src="js/p5.sound.min.js"></script>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Scope+One&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <link href="images/logo.png" rel="icon" type="image/png" />
+    <title>Pendulum Lab - Physics</title>
+  </head>
+
+  <body>
+
+<!--Nav Bar -->
+<section>
+  	<nav class="navbar-expand-lg navbar navbar-dark bg-dark">
+  <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"><a class="navbar-brand" href="#">&nbsp;&nbsp;&nbsp; MY PENDULUM LAB</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#home">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#demo">Demo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">Contact</a>
+      </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">19BCE7048</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</section>
+
+<br>
+
+<!--Home -->
+<section id="home">
+	<div class="container">
+		<h1>Pendulum with Direction Field</h1><br><br>
+		<p style="font-size: 21px;">Physics-based simulation of a pendulum, showing both the pendulum bob movement and the direction
+field (or slope field) associated with the differential equation.</p><br>
+
+<p style="font-size: 21px;">However, a fairly standard way to investigate the behavior of a 1-D particle (albeit not one taught in Taylor until much later) is to rewrite the equations of motion as follows:</p>
+<div class="text-center">
+  <img src="images/formula1.png" class="rounded" alt="formula1">
+</div>
+
+<p style="font-size: 21px;">You can then plot a vector field with ϕ along the horizontal axis and ω along the vertical axis, where the vector field is</p>
+<div class="text-center">
+  <img src="images/formula2.png" class="rounded" alt="formula2">
+</div>
+
+<p style="font-size: 21px;">The advantage of this way of plotting things is that the slope of a vector in this plane is equal to the rate of change of ω with respect to ϕ, since by definition</p>
+<div class="text-center">
+  <img src="images/formula3.png" class="rounded" alt="formula3">
+</div>
+
+<br>
+<h3>How to understand ?</h3><br>
+<div>
+	<ul style="font-size: 21px; list-style-type: square;">
+		<li> The simulation is made using p5.js ( Processing using JavaScript ) </li><br>
+		<li> It shows the simulation of Pendulum Bob based on the direction field associated with the differential equation calculations. </li><br>
+		<li> The direction field is distributed on the left side and the bob movement is showcased on the right side. </li><br>
+		<li> When you click anywhere on the director field area, the movement of bob decides on the basis of direction vector represented there. </li><br>
+		<li> <b>Note : </b>The vector field you're plotting isn't all that meaningful and accurate. This whole technique is what's known as a phase space technique; it's a handy tool for investigating the properties of solutions in a qualitative way. </li>
+	</ul>
+</div>
+</section><br>
+
+<div class="button text-center">
+      <a href="https://editor.p5js.org/GudiVaraprasad/sketches/Pp3-DScBO" target="_blank" type="button" class="btn btn-outline-danger text-center">Source Code</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.lehman.edu/faculty/anchordoqui/chapter24.pdf" target="_blank" type="button" class="btn btn-outline-danger text-center">Learn More</a>
+</div>
+<br>
+
+<!--Demo -->
+<section id="demo">
+	<div class="container" align="text-center">
+		<h2>Lab Demo ( Project Component ) </h2><br>
+	<div class="embed-responsive embed-responsive-21by9">
+  	<iframe src="https://editor.p5js.org/GudiVaraprasad/embed/Pp3-DScBO"></iframe>
+	</div>
+	</div>
+</section><br><br>
+
+<!--Conclusion -->
+<section>
+	<div class="container">
+		<h3>References</h3><br>
+
+<p style="font-size: 21px;">See the page about the
+<a href="https://www.myphysicslab.com/pendulum/pendulum-en.html" target="_blank">single pendulum</a>
+for more about how pendulums work and the math behind this simulation. This simulation
+is identical to that one, but adds a graph of the
+<a href="http://en.wikipedia.org/wiki/Slope_field" target="_blank">direction field</a>
+(AKA slope field) of the differential equation.  This direction field is shown
+overlapping the  <a href="http://en.wikipedia.org/wiki/Phase_space" target="_blank">phase space</a>
+graph of angular velocity vs. angle.  At each point, the path of the pendulum in phase
+space is along the direction field.</p>
+
+<p style="font-size: 21px;">Also available are:
+	<a href="https://www.myphysicslab.com/pendulum/direction-field-en.html" target="_blank">Full Lab Experiment</a>,
+<a href="https://github.com/myphysicslab/myphysicslab/blob/master/src/sims/pendulum/VectorGraphPendulumApp.js" target="_blank">open source code</a>,
+<a href="../develop/docs/myphysicslab.sims.pendulum.VectorGraphPendulumApp.html" target="_blank">documentation</a> and a
+<a href="../develop/build/sims/pendulum/VectorGraphPendulumApp-en.html" target="_blank">simple-compiled version</a>
+which is <a href="../develop/docs/Customizing.html" target="_blank">more customizable</a>.
+</p>
+	</div>
+</section>
+
+    <!-- footer -->
+  <section id="contact">
+     <div class="footer" style="font-size: 20px; font-family: 'Scope One', serif;">&copy; <i>2020 &nbsp; Gudi Varaprasad - 19BCE7048</i></div>
+  </section>
+
+<!-- Bootstrap js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<!-- CDN jquery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha512-k2WPPrSgRFI6cTaHHhJdc8kAXaRM4JBFEDo1pPGGlYiOyv4vnA0Pp0G5XMYYxgAPmtmv/IIaQA6n5fLAyJaFMA==" crossorigin="anonymous"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Mathjax -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>
