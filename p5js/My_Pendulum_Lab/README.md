@@ -1,6 +1,7 @@
 ![](images/banner.png)
 
-## Project Title : My Pendulum Lab - Visualizing Direction Field of a Bob
+## Project Title : 
+My Pendulum Lab - Visualizing Direction Field of a Bob
 
 ## Abstract of the project: 
 
