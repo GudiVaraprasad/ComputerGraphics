@@ -1,0 +1,102 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+def setup():
+    size(300, 300)
+
+
+maxOfX = 150
+maxOfY = 150
+minOfX = 10
+minOfY = 10
+inside = 0  # 0000
+left = 1  # 0001
+right = 2  # 0010
+bottom = 4  # 0100
+top = 8  # 1000
+
+
+def draw():
+    background(150)
+    if keyPressed:
+        line_clipping(10, 10, 100, 100)
+        clip(10, 10, 100, 100)
+    else:
+        noClip()
+    strokeWeight(1)
+    rect(10, 10, maxOfX, maxOfY)
+    line(60, 80, 180, 80)
+
+
+def Code_Method(x, y):
+    code = inside
+    if x < minOfX:
+        code = code | left
+    elif x > maxOfX:
+
+        code = code | right
+
+    if y < minOfY:
+        code = code | top
+    elif y > maxOfY:
+
+        code = code | bottom
+    return code
+
+
+def line_clipping(
+    x1,
+    y1,
+    x2,
+    y2,
+    ):
+    object1 = Code_Method(x1, y1)
+    object2 = Code_Method(x2, y2)
+
+    while True:
+        if object1 == 0 and object2 == 0:
+            is_LINE = True
+            break
+        elif object1 & object2 != 0:
+
+            break
+        else:
+
+            x = 0
+            y = 0
+
+            if object1 != 0:
+                output = object1
+            else:
+                output = object2
+
+        if output & bottom != 0:
+            x = x1 + (x2 - x1) * (maxOfY - y1) / (y2 - y1)
+            y = maxOfY
+        elif output & top != 0:
+            x = x1 + (x2 - x1) * (minOfY - y1) / (y2 - y1)
+            y = minOfY
+        elif (output and right) != 0:
+            y = y1 + (y2 - y1) * (maxOfX - x1) / (x2 - x1)
+            x = maxOfX
+        elif output & left != 0:
+            y = y1 + (y2 - y1) * (minOfX - x1) / (x2 - x1)
+            x = minOfX
+
+            if output == object1:
+                x1 = x
+                y1 = y
+                object1 = Code_Method(x1, y1)
+            else:
+                x2 = x
+                y2 = y
+                object2 = Code_Method(x2, y2)
+            if is_LINE == True:
+                stroke(0, 0, 0)
+            strokeWeight(3)
+            stroke(0, 0, 0)
+
+
+
+			
