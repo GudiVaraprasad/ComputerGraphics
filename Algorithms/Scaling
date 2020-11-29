@@ -1,0 +1,17 @@
+// Scaling
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  stroke(0);
+  push();
+  scale(1.5);
+  triangle(20, 20, 60, 20,60,60);
+  pop(); 
+  noFill();
+  stroke(120);
+  triangle(30, 45, 70, 45,70,85);
+}
