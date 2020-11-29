@@ -1,0 +1,28 @@
+let startAngle;
+let density;
+let radius;
+let i;
+
+function setup() {
+  createCanvas(300,300);
+  smooth();
+  stroke(0);
+  noFill();
+  startAngle  = PI/2;
+  radius = 50;
+  density = 0.25;
+}
+
+function draw() {
+  background(255);
+  translate(100,100);
+  noFill();
+  for( i = -1; i <1;i+=density) {
+    let angle = acos(i);
+    line(cos(startAngle+angle)*radius,sin(startAngle+angle)*radius/2,cos(startAngle-angle)*radius,sin(startAngle-angle)*radius/2);
+    line(sin(startAngle+angle)*radius,cos(startAngle+angle)*radius/2,sin(startAngle-angle)*radius,cos(startAngle-angle)*radius/2);
+  }
+  //strokeWeight(0.5);
+  ellipse(0,0,radius*2,radius);
+  fill(255);
+}
