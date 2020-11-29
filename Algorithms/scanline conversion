@@ -1,0 +1,23 @@
+def setup(): 
+    size(500, 500)
+def draw():
+   background(0)
+   strokeWeight(3)
+   myScanLine(250,140,80,400)
+   updatePixels()
+
+def myScanLine(x1,y1,x2,y2):
+    m=(y2-y1)/(x2-x1)
+    z=y1-(m*x1)
+    if x2-x1<0:
+        x=x2
+        y=y2
+        xend=x1
+    else: 
+        x=x1 
+        y=y1 
+        xend=x2
+    while x<=xend: 
+        set (x, y, color(255,255,0))   
+        x = x+1
+        y=(m*x)+z
