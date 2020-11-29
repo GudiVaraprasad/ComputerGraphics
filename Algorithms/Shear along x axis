@@ -1,0 +1,17 @@
+// Shear along x axis
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  noFill();
+  stroke(0);
+  triangle(20, 20, 180, 20,180,85);
+  push();
+  shearX(PI / 4.0);
+  stroke(255,0,0);
+  triangle(5, 20, 160, 20,180,85);
+  pop();
+}
