@@ -1,0 +1,27 @@
+var gl;
+var b = true;
+function setup() {
+      createCanvas(400, 400, WEBGL);
+      gl = document.getElementById('defaultCanvas0').getContext('webgl');
+}
+
+function draw() {
+	background(0);
+	noStroke();
+
+	fill(77, 255, 77);
+	rotateY(frameCount * 0.005);
+	box(200);
+	
+	fill(153, 102, 255);
+	rotateY(PI * 0.25);
+	box(200);
+}
+function mousePressed() {
+	if(b) {
+		gl.disable(gl.DEPTH_TEST);
+	} else {
+		gl.enable(gl.DEPTH_TEST);
+	}
+	b = !b;
+}
