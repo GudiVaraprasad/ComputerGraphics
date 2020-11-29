@@ -1,0 +1,15 @@
+// Translation
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(240);
+  stroke(2);
+  triangle(20, 20, 180, 20,180,85);
+  push();
+  translate(200,200);
+  triangle(5, 20, 180, 20,180,85);
+  pop();
+}
