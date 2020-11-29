@@ -1,0 +1,37 @@
+// point line-line intersection
+
+// Gudi Varaprasad - 19BCE7048
+
+
+var x1=50
+var y1=50
+var x2=50
+var y2=300
+var x3=20
+var y3=50
+var x4=300
+var y4=50
+
+function setup() {
+    createCanvas(400, 400) 
+}
+  
+function draw() {
+  background(255)
+  
+  strokeWeight(5)
+  stroke(0, 0, 77)
+  line(x1,y1,x2,y2)
+  line(x3,y3,x4,y4)
+  
+  var t=((x1-x3)*(y3-y4)-(y1-y3)*(x3-x4))/((x1-x2)*(y3-y4)-(y1-y2)*(x3-x4));
+   
+  px=x1+t*(x2-x1)
+  py=y1+t*(y2-y1)
+  
+  beginShape()
+    fill(255, 102, 0)
+    strokeWeight(2)
+    ellipse(px,py,15,15)
+  endShape()
+}
