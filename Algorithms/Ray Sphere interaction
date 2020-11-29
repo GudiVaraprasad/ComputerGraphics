@@ -1,0 +1,71 @@
+Ray ray1 = new Ray(100, 100);
+PVector sphere_center, oc, pt;
+float radius, x, y;
+void setup() {
+    size(500, 500);
+}
+void draw() {
+    background(0);
+    sphere_center = new PVector();
+    oc = new PVector();
+    fill(255);
+    sphere_center.x = 200;
+    sphere_center.y = 200;
+    ellipse(sphere_center.x, sphere_center.y, 200, 200);
+    radius = 100;
+    ray1.show();
+    ray1.lookup(mouseX, mouseY);
+    float t = hit_sphere(sphere_center, radius, ray1);
+    pt = new PVector();
+    pt.x = ray1.origin().x + t * ray1.direction().x;
+    pt.y = ray1.origin().y + t * ray1.direction().y;
+    strokeWeight(2);
+    stroke(255);
+    fill(255, 0, 0);
+    ellipse(pt.x, pt.y, 15, 15);
+}
+class Ray {
+    PVector pos, dir;
+    Ray(int x, int y) {
+        this.pos = new PVector(x, y);
+        this.dir = new PVector(1, 0);
+        this.pos.x = x;
+        this.pos.y = y;
+    }
+    PVector origin() {
+        return this.pos;
+    }
+    PVector direction() {
+        return this.dir;
+    }
+    void show() {
+        stroke(color(255, 209, 26));
+        line(this.pos.x, this.pos.y, this.pos.x + this.dir.x, this.pos.y + this.dir.y);
+    }
+    void lookup(int x, int y) {
+        this.dir.x = x - this.pos.x;
+        this.dir.y = y - this.pos.x;
+    }
+}
+float hit_sphere(PVector sphere_center, float radius, Ray ray1) {
+    oc.x = ray1.origin().x - sphere_center.x;
+    oc.y = ray1.origin().y - sphere_center.y;
+    float a = PVector.dot(ray1.direction(), ray1.direction());
+    float b = 2.0 * PVector.dot(oc, ray1.direction());
+    float c = PVector.dot(oc, oc) - radius * radius;
+    float discriminant = b * b - 4 * a * c;
+    if (discriminant < 0) {
+        return discriminant;
+    } else {
+        float numerator = -b - sqrt(discriminant);
+        if (numerator > 0) {
+            return numerator / (2 * a);
+        }
+        numerator = -b + sqrt(discriminant);
+        if (numerator > 0) {
+            return numerator / (2 * a);
+        } else {
+            return discriminant;
+        }
+    }
+}
