@@ -1,0 +1,18 @@
+// Rotation
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(200);
+  smooth();
+  noFill();
+  stroke(8);
+  triangle(100, 100, 150, 100, 100, 200);
+  translate(0,200); 
+  push();
+  rotate(radians(270));
+  triangle(100, 100, 50, 200, 100, 200);
+  pop();
+}
