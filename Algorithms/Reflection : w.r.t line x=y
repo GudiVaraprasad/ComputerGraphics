@@ -1,0 +1,33 @@
+// Reflection : w.r.t line x=y
+// Code: (Processing-java)
+
+
+PVector line1;
+PVector line2;
+PVector line3;
+void setup(){
+size(500,500);
+}
+class PVector
+{
+float x;
+float y;
+PVector(float x, float y)
+{
+this.x = x;
+this.y = y;
+}
+}
+void draw()
+{
+background(255);
+stroke(0);
+noFill();
+triangle(100,100,300,100,300,180);
+pushMatrix();
+line1 = new PVector(100,100);
+line2= new PVector(100,300);
+line3= new PVector(180,300);
+triangle(line1.x,line1.y,line2.x,line2.y,line3.x,line3.y);
+popMatrix();
+}
