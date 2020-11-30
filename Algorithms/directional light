@@ -1,0 +1,24 @@
+void setup(){
+  size(800,800,P3D);
+  smooth(8);
+}
+void draw(){
+ 
+  background(0);
+ 
+  ambientLight(64,64,64);
+ 
+  if(mousePressed){
+    directionalLight(128,128,128, 0, 0, -1);  // light from viewer
+  } else {
+    directionalLight(128,128,128, 0, 1, 0);   // light from above
+  }
+ 
+  noStroke();
+  pushMatrix();
+    translate(width * 0.5, height * 0.5, -width * 0.25);
+ 
+    ambient(33,66,255);
+    sphere(width * 0.25);
+  popMatrix();
+}
