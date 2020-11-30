@@ -1,0 +1,30 @@
+camera(width/2.0, height/2.0, (height/2.0) / tan(PI*30.0 / 180.0),
+        width/2.0, height/2.0, 0,
+        0, 1, 0);
+        
+PVector cameraPosition;
+ 
+void setup(){
+  size(512,512,P3D);
+  smooth(8);
+}
+ 
+void draw(){
+  background(0);
+ 
+  lights();
+ 
+  cameraPosition = new PVector(1,-1,1);
+  cameraPosition.rotate(frameCount * 0.05);
+ 
+  float distance = 300.0;
+ 
+  float eye_x = cameraPosition.x * distance;
+  float eye_y = -100;
+  float eye_z = cameraPosition.y * distance;
+ 
+  camera(eye_x, eye_y, eye_z, 0.0, 0.0, 0.0, 0, 1, 0);
+ 
+  box(width * 0.25);
+ 
+}
