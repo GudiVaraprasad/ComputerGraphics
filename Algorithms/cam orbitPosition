@@ -1,0 +1,48 @@
+PVector orbitPosition;
+ 
+void setup() {
+  size(800, 800, P3D);
+  smooth(8);
+}
+void draw() {
+  background(0);
+ 
+  ambientLight(128,128,128);
+  directionalLight(128,128,128,1,1,0);
+ 
+  orbitPosition = new PVector(1, -1, 1);
+  orbitPosition.rotate(frameCount * 0.05);
+ 
+  float distance = 300.0;
+ 
+  float eye_x = orbitPosition.x * distance;
+  float eye_y = 0;
+  float eye_z = orbitPosition.y * distance;
+ 
+  camera(500, -300, 1000, 0, 0, 0, 0, 1, 0);
+ 
+  if (mousePressed) {
+    camera(500, -300, 1000, eye_x, eye_y, eye_z, 0, 1, 0);
+  }
+ 
+  pushMatrix();  // the floor
+    translate(0, width * 0.2, 0);
+    fill(0, 255, 0);
+    stroke(0);
+    box(1000, 5, 1000);
+  popMatrix();
+ 
+  pushMatrix(); // the stationary object
+    translate(0, 0, 0);
+    fill(0, 0, 255);
+    noStroke();
+    sphere(width * 0.2);
+  popMatrix();
+ 
+  pushMatrix();   // the rotating object
+    translate(eye_x, eye_y, eye_z);
+    fill(255, 255, 255);
+    noStroke();
+    sphere(30.0);
+  popMatrix();
+}
