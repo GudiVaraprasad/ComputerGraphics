@@ -1,0 +1,31 @@
+void setup(){
+  size(800,800,P3D);
+  smooth(8);
+  noStroke();
+}
+void draw(){
+  background(0);
+ 
+  ambientLight(128, 128, 128);
+ 
+  lightSpecular(128,128,128);
+  directionalLight(128,128,128, cos(frameCount * 0.1), 1, -1);
+ 
+  pushMatrix();
+    translate(width * 0.25, height * 0.5, 0);
+ 
+    specular(0,0,0);      // the equivalent of no specular light
+    ambient(255,0,0);
+    sphere(width * 0.2);
+ 
+  popMatrix();
+ 
+  pushMatrix();
+    translate(width * 0.75, height * 0.5, 0);
+ 
+    specular(255,255,255);
+    ambient(255,0,0);
+    sphere(width * 0.2);
+ 
+  popMatrix();
+}
