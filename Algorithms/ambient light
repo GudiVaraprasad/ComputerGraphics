@@ -1,0 +1,20 @@
+void setup(){
+  size(800,800,P3D);
+  smooth(8);
+}
+void draw(){
+  background(0);
+ 
+  ambientLight(128,128,128);
+ 
+  noStroke();
+  pushMatrix();
+    translate(width * 0.5, height * 0.5);
+    rotateX(-PI * 0.2);
+    rotateY(PI * 0.3);
+ 
+    // fill(255,0,0); // Stop using fill().
+    ambient(255,0,0); // material setting
+    box(width * 0.33);
+  popMatrix();
+}
