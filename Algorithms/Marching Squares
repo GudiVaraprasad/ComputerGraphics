@@ -1,0 +1,104 @@
+var resolution, columns, rows, i, j, state;
+var a, b, c, d;
+var matrix = [];
+
+function setup()
+{
+   createCanvas(600, 500);
+   fullscreen();
+   resolution = 30;
+
+   columns = width / resolution;
+   rows = height / resolution;
+
+   for (i = 0; i < columns; i++)
+   {
+      matrix[i] = [];
+      for (j = 0; j < rows; j++)
+      {
+         matrix[i][j] = floor(random(2));
+      }
+   }
+}
+
+function draw()
+{
+   background(163, 163, 117);
+   for (i = 0; i < columns; i++)
+   {
+      for (j = 0; j < rows; j++)
+      {
+         stroke(matrix[i][j] * 255);
+         strokeWeight(3)
+
+         x = i * resolution;
+         y = j * resolution;
+         point(x, y);
+
+         a = createVector(x, y + resolution * 0.5);
+         b = createVector(x + resolution * 0.5, y + resolution);
+         c = createVector(x + resolution, y + resolution * 0.5);
+         d = createVector(x + resolution * 0.5, y)
+
+         state = getState(matrix[i][j], matrix[i][j + 1], matrix[i + 1][j + 1], matrix[i + 1][j]);
+
+         stroke(255,0,0);
+         strokeWeight(1.5);
+         
+         switch (state)
+         {
+            case 1:
+               line(c.x, c.y, d.x, d.y);
+               break;
+            case 2:
+               line(c.x, c.y, b.x, b.y);
+               break;
+            case 3:
+               line(b.x, b.y, d.x, d.y);
+               break;
+            case 4:
+               line(b.x, b.y, a.x, a.y);
+               break;
+            case 5:
+               line(b.x, b.y, c.x, c.y);
+               line(a.x, a.y, d.x, d.y);
+               break;
+            case 6:
+               line(a.x, a.y, c.x, c.y);
+               break;
+            case 7:
+               line(a.x, a.y, d.x, d.y);
+               break;
+            case 8:
+               line(a.x, a.y, d.x, d.y);
+               break;
+            case 9:
+               line(a.x, a.y, c.x, c.y);
+               break;
+            case 10:
+               line(b.x, b.y, a.x, a.y);
+               line(c.x, c.y, d.x, d.y);
+               break;
+            case 11:
+               line(b.x, b.y, a.x, a.y);
+               break;
+            case 12:
+               line(b.x, b.y, d.x, d.y);
+               break;
+            case 13:
+               line(b.x, b.y, c.x, c.y);
+               break;
+            case 14:
+               line(d.x, d.y, c.x, c.y);
+               break;
+            case 15:
+               break;
+         }
+      }
+   }
+}
+
+function getState(a, b, c, d)
+{
+   return a * 8 + b * 4 + c * 2 + d;
+}
