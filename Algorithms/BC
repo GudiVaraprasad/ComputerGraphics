@@ -1,0 +1,109 @@
+ArrayList<PVector> points;
+ArrayList<PVector> drawingPoints;
+
+float t = 0.0;
+Bezier bezier;
+
+boolean bezierIsDrawing = false;
+
+void setup() {
+   size(1000, 720);
+  //fullScreen();
+
+  points = new ArrayList<PVector>();
+  drawingPoints = new ArrayList<PVector>();
+  bezier = new Bezier();
+
+  strokeWeight(3);
+  textAlign(CENTER);
+  textSize(14);
+}
+
+void draw() {
+
+  background(0,0,20);
+
+  fill(#ffffff);
+  for(PVector p : points){
+    ellipse(p.x, p.y, 12, 12);
+  }
+
+  if(bezierIsDrawing){
+    t = constrain(t+0.003, 0, 1);
+    
+    PVector bezierPoint = bezier.displayBezier(points, t);
+    if(!drawingPoints.contains(bezierPoint)) drawingPoints.add(bezierPoint);
+
+    stroke(#ffffff);
+    noFill();
+    beginShape();
+    for(PVector p : drawingPoints){
+      vertex(p.x, p.y);
+    }
+    endShape();
+  }
+
+  
+  fill(#ffffcc);
+  text("Click on screen to add bezier points, press ENTER to start the simulation, press BACKSPACE to clear the screen.", width/2, 0.98*height);
+
+}
+
+void mouseReleased() {
+  if(!bezierIsDrawing) points.add(new PVector(mouseX, mouseY));
+}
+
+void keyPressed() {
+  if(keyCode == ENTER){
+    if(points.size()>1)  bezierIsDrawing = true;
+  }
+
+  if(keyCode == BACKSPACE){
+    if(t==1.0){
+      stroke(#ffffff);
+      t = 0.0;
+      bezierIsDrawing = false;
+      points.clear();
+      drawingPoints.clear();
+    }
+  }
+}
+class Bezier{
+  int circR = 12;
+
+  Bezier(){
+    println("Bezier created.");
+  }
+
+  public PVector displayBezier(ArrayList<PVector> points, float t){
+    int n = points.size();
+    color c = color(constrain(150+28*n, 150, 255), constrain(100+32*n, 100, 77), constrain(90+36*n, 90, 77));
+    stroke(c);
+    fill(c);
+
+    if(n==1){
+      PVector p1 = points.get(0);
+
+      ellipse(p1.x, p1.y, circR, circR);
+
+      return p1;
+    }else{
+      ArrayList<PVector> newPoints = new ArrayList<PVector>();
+  
+      for(int i=1; i<points.size(); i++){
+        PVector p1 = points.get(i-1);
+        PVector p2 = points.get(i);
+  
+        line(p1.x, p1.y, p2.x, p2.y);
+        ellipse(p1.x, p1.y, circR, circR);
+        ellipse(p2.x, p2.y, circR, circR);
+  
+        newPoints.add(new PVector(p1.x+t*(p2.x-p1.x), p1.y+t*(p2.y-p1.y)));
+  
+      }
+  
+      return displayBezier(newPoints, t);
+    }
+  }
+
+}
