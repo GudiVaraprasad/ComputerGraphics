@@ -1,4 +1,4 @@
-![](images/banner.png)
+![](images/banner.jpg)
 
 ## Project Title : 
 My Pendulum Lab - Visualizing Direction Field of a Bob
